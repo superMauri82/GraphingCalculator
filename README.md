@@ -49,6 +49,9 @@ $ npm test
 $ yarn test
 ```
 
+## Visual Draft for App
+We're heading towards something like this...
+![draft.mauri.graphing.calculator.app](src/assets/sketch.png)
 
 
 ## Rationale for Dependencies
