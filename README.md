@@ -1,6 +1,45 @@
 # MauriGraphingCalculator
 Mauri's Online Graphing Calculator (React/Redux based)
 
+## Installation & Running
+git assumed... 
+npm and/or yarn should also be present...
+
+### Git
+
+Clone this Repository :
+
+```
+git clone git@github.com:superMauri82/MauriGraphingCalculator.git$ 
+```
+
+### Node 
+Install Dependencies:
+
+```
+$ npm install
+```
+
+Start Browser App
+
+```
+$ npm start
+```
+
+### Yarn 
+Install Dependencies:
+
+```
+$ yarn install
+```
+
+Start Browser App
+
+```
+$ yarn start
+```
+
+
 ## Rationale for Dependencies
 
 * [RxJS](https://rxjs-dev.firebaseapp.com/)
