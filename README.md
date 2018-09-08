@@ -39,6 +39,17 @@ Start Browser App
 $ yarn start
 ```
 
+## Running Tests
+### Node
+```
+$ npm test
+```
+### Yarn
+```
+$ yarn test
+```
+
+
 
 ## Rationale for Dependencies
 
@@ -51,7 +62,7 @@ $ yarn start
 - Expressive data managed documents
 - Smooth integration with React
 
-* [redux](https://github.com/reduxjs/react-redux)
+* [redux](https://github.com/reduxjs/react-re)
 - The De Facto State Management Library for React (over other Flux implementations)
 
 * [redux-thunk](https://github.com/reduxjs/redux-thunk)
