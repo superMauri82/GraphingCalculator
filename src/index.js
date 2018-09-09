@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles/index.css';
 import 'semantic-ui-css/semantic.min.css';
-import App from './App';
+import GraphingCalculator from './components/CalculatorContainer';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<GraphingCalculator />, document.getElementById('root'));
 registerServiceWorker();
