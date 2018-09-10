@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Segment } from 'semantic-ui-react'
 import FeedbackDisplay from './FeedbackDisplay'
-import ExpressionDisplay from './ExpressionDisplay'
-import Keyboard from './Keyboard'
+import KeyboardAndDisplay from './Keyboard'
 import Graphic  from './Graphic'
 
 const CalculatorContainer = () => (
@@ -14,10 +13,7 @@ const CalculatorContainer = () => (
             <FeedbackDisplay/>
           </Segment>
           <Segment>
-            <ExpressionDisplay/>
-          </Segment>
-          <Segment>
-            <Keyboard/>
+            <KeyboardAndDisplay/>
           </Segment>
         </Grid.Column>
         <Grid.Column>
