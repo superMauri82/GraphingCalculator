@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Keyboard from 'react-simple-keyboard';
 import 'simple-keyboard/build/css/index.css';
+import '../styles/simple-keyboard-reset.css';
 
 export default class KeyboardCalculator extends Component {
   state = {
@@ -54,10 +55,12 @@ export default class KeyboardCalculator extends Component {
           newLineOnEnter={true}
           layout={{
             'default': [
-              'log 1 2 3 (',
-              'exp 4 5 6 )',
-              'cos 7 8 9 +',
-              'acos e 0 pi -',
+              'x^-1 sin cos tan',
+              'x^2 sin ( ) %',
+              'log 7 8 9 x',
+              'ln 4 5 6 -',
+              'sqr 1 2 3 +',
+              'on 0 . (-) -',
               '{space} {bksp} {ext}',
             ],
             'extended': [
