@@ -6,8 +6,6 @@ import { select, event } from 'd3-selection'
 import { brush } from 'd3-brush'
 import { line } from 'd3-shape'
 import { axisLeft, axisBottom } from 'd3-axis'
-import { drag } from 'd3-drag'
-import isEqual from 'lodash/isEqual'
 import '../styles/Graphic.css'
 
 export default class Graphic extends Component{
@@ -53,7 +51,6 @@ export default class Graphic extends Component{
           zoom, 
           height,
           width,                    
-          upFreeSpaceCoeff,          
           data,
           onChangeZoomX } = props
 
@@ -172,10 +169,8 @@ export default class Graphic extends Component{
         const yInitialDomain = this.yInitialDomain
         const xOffset        = this.xOffset
         const yOffset        = this.yOffset
-        const width          = this.width
         const height         = this.height
         const onChangeZoomX  = this.onChangeZoomX 
-        const id_channel     = this.id_channel
         const maxLengthOfSamplesFiles = this.maxLengthOfSamplesFiles
         const yRangeMin      = this.yRangeMin
         const brush          = this.brush()
@@ -259,7 +254,7 @@ export default class Graphic extends Component{
             select(node).select(".brush").call(brush.move, null)
           }
           zoom()
-          //onChangeZoomX(id_channel,x_new_values)
+          //onChangeZoomX()
 
         }
 
@@ -268,7 +263,7 @@ export default class Graphic extends Component{
         const yAxis      = this.yAxis
         function zoom() {
           var t = select(node).transition().duration(1000);
-          select(node) .select(".axis--x").transition(t).call(xAxis);
+          select(node).select(".axis--x").transition(t).call(xAxis);
           select(node).select(".axis--y").transition(t).call(yAxis);
           select(node).selectAll('path.line')
              .transition(t)
