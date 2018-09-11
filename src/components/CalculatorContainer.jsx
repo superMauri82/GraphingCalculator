@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { Grid, Segment } from 'semantic-ui-react'
-import FeedbackDisplay from './FeedbackDisplay'
+import FeedbackDisplayContainer from '../containers/FeedbackDisplayContainer'
 import KeyboardAndDisplay from './Keyboard'
 import Graphic  from './Graphic'
 
 const CalculatorContainer = () => (
 
-    <Grid  container stacked divided columns={2}>
+    <Grid container stacked divided columns={2}>
       <Grid.Row stretched >
         <Grid.Column>
           <Segment>
-            <FeedbackDisplay/>
+            <FeedbackDisplayContainer />
           </Segment>
           <Segment>
             <KeyboardAndDisplay/>
