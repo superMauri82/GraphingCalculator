@@ -2,11 +2,17 @@ import React, { Component } from 'react'
 import { Grid, Segment } from 'semantic-ui-react'
 import FeedbackDisplayContainer from '../containers/FeedbackDisplayContainer'
 import KeyboardAndDisplay from './Keyboard'
-import Graphic  from './Graphic'
+import GraphicContainer  from '../containers/GraphicContainer'
+import ProjectHeader from './ProjectHeader'
+import lib from '../lib/lib'
 
 const CalculatorContainer = () => (
 
     <Grid container stacked divided columns={2}>
+
+      <Grid.Row stretched >
+          <ProjectHeader/>
+      </Grid.Row>
       <Grid.Row stretched >
         <Grid.Column>
           <Segment>
@@ -18,7 +24,7 @@ const CalculatorContainer = () => (
         </Grid.Column>
         <Grid.Column>
           <Segment>
-            <Graphic />
+            <GraphicContainer />
           </Segment>
         </Grid.Column>
       </Grid.Row>
