@@ -7,10 +7,11 @@ var initialState = {
        statusCode: 0,
        statusDescription: "No Error"
     },
+    currentExpression: "x+ cos(x) + 10 + x^3",
     savedExpressions: [
         { 
             id: v4(),
-            expression: "A + 10",
+            expression: "x + 10",
             createdAt: moment()
         },
     ]
