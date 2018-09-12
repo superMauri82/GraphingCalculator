@@ -55,13 +55,13 @@ export default class KeyboardCalculator extends Component {
           newLineOnEnter={true}
           layout={{
             'default': [
-              'x^-1 sin cos tan',
+              'x^-1 sin cos tan {bksp}',
               'x^2 sin ( ) %',
-              'log 7 8 9 x',
+              'log 7 8 9 *',
               'ln 4 5 6 -',
               'sqr 1 2 3 +',
-              'on 0 . (-) -',
-              '{space} {bksp} {ext}',
+              '{save} 0 . x -',
+              '{space}',
             ],
             'extended': [
               'ln 1 2 3 (',
@@ -76,9 +76,10 @@ export default class KeyboardCalculator extends Component {
           display={{
             '{norm}': 'default',
             '{ext}': 'extended',
-            '{bksp}': 'backspace',
+            '{bksp}': 'bksp',
             '{enter}': '< enter',
-            '{space}': ' ',
+            '{save}': 'save',
+            '{space}': 'space ',
             '{//}': ' '
           }}
         />
