@@ -20,17 +20,14 @@ export default class Graphic extends Component{
     }
 
     componentDidMount(){
-        console.log("Graphic::componentDidMount()")
         this.createBarCharts()
     }
 
     shouldComponentUpdate(nextProps, nextState){
-        console.log("Graphic::shouldComponentUpdate()")
         return true
     }
 
     componentDidUpdate(){
-      console.log("Graphic::componentDidUpdate()")
       this.createBarCharts()
     }
 
@@ -39,11 +36,9 @@ export default class Graphic extends Component{
     }
 
     componentWillUpdate(nextProps, nextState){
-      console.log("Graphic::componentWillUpdate()")
     }
 
     componentWillUnmount(){
-      console.log("Graphic::componentWillUnmount()")
     }
 
     calculateChartValues(props){
@@ -63,55 +58,9 @@ export default class Graphic extends Component{
          this.xOffset       = 0.05*this.width;
          this.yOffset       = 0.05*this.height; 
          this.yRangeMin     = 0.2*this.yOffset; 
-
-         this.data          = [
-             [ 
-               { x: -1.0, y: -1.0 }, 
-               { x: -0.9, y: -0.9 }, 
-               { x: -0.8, y: -0.8 }, 
-               { x: -0.7, y: -0.7 }, 
-               { x: -0.6, y: -0.6 }, 
-               { x: -0.5, y: -0.5 }, 
-               { x: -0.4, y: -0.4 }, 
-               { x: -0.3, y: -0.3 }, 
-               { x: -0.2, y: -0.2 },
-               { x: -0.1, y: -0.1 }, 
-               { x:  0.0, y:  0.0 }, 
-               { x:  0.1, y:  0.1 }, 
-               { x:  0.2, y:  0.2 }, 
-               { x:  0.3, y:  0.3 }, 
-               { x:  0.4, y:  0.4 }, 
-               { x:  0.5, y:  0.5 }, 
-               { x:  0.6, y:  0.6 }, 
-               { x:  0.7, y:  0.7 },
-               { x:  0.8, y:  0.8 },
-               { x:  0.9, y:  0.9 },
-               { x:  1.0, y:  1.0 }
-             ],
-             [ 
-               { x: -1.0, y:  1.0 }, 
-               { x: -0.9, y:  0.9 }, 
-               { x: -0.8, y:  0.8 }, 
-               { x: -0.7, y:  0.7 }, 
-               { x: -0.6, y:  0.6 }, 
-               { x: -0.5, y:  0.5 }, 
-               { x: -0.4, y:  0.4 }, 
-               { x: -0.3, y:  0.3 }, 
-               { x: -0.2, y:  0.2 },
-               { x: -0.1, y:  0.1 }, 
-               { x:  0.0, y:  0.0 }, 
-               { x:  0.1, y: -0.1 }, 
-               { x:  0.2, y: -0.2 }, 
-               { x:  0.3, y: -0.3 }, 
-               { x:  0.4, y: -0.4 }, 
-               { x:  0.5, y: -0.5 }, 
-               { x:  0.6, y: -0.6 }, 
-               { x:  0.7, y: -0.7 },
-               { x:  0.8, y: -0.8 },
-               { x:  0.9, y: -0.9 },
-               { x:  1.0, y: -1.0 }
-             ]
-         ]
+        
+         // should be [[]]
+         this.data          = data;
 
          this.minsAndMaxsOfSamplesFiles = this.data
 		                              .map( sampleArray => extent( sampleArray, d=>+d.y ) )
@@ -126,7 +75,7 @@ export default class Graphic extends Component{
          this.shortestOfDomain         = min(this.minsAndMaxsOfDomain,d=>d)
          this.greatestOfDomain         = max(this.minsAndMaxsOfDomain,d=>d)
          this.upFreeSpaceCoeff         = 0.1
-         this.maxOfDomain              = this.greatestOfAll * ( 1 + this.upFreeSpaceCoeff )
+         this.maxOfDomain              = this.greatestOfAll + (Math.abs(this.greatestOfAll)* this.upFreeSpaceCoeff )
          this.maxLengthOfSamplesFiles  = this
                                           .data
 		                                  .reduce( (acc,a) => a.length > acc ? a.length : acc, 0 )
@@ -154,7 +103,6 @@ export default class Graphic extends Component{
 
     // Continuar desde aca para generar el zoom en el grafico
     createBarCharts(){
-        console.log("Graphic::createBarCharts()")
         const node             = this.node
         let incomingDataLine   = this.incomingDataLine
         const colors           = this.colors
