@@ -1,7 +1,8 @@
 const constants = {
-   ADD_VALID_EXPRESSION     : "ADD_VALID_EXPRESSION",    /* => adds NEW valid expression to calculator memory */
-   REMOVE_VALID_EXPRESSION  : "REMOVE_VALID_EXPRESSION", /* => removes existing valid expression from calculator memory */
-   UPDATE_FEEDBACK_STATUS   : "UPDATE_FEEDBACK_STATUS",  /* => updates mssg to show to the user */
+   SAVE_EXPRESSION           : "SAVE_EXPRESSION",    /* => adds NEW valid expression to calculator memory */
+   REMOVE_EXPRESSION         : "REMOVE_EXPRESSION", /* => removes existing valid expression from calculator memory */
+   ERROR_EXPRESSION          : "ERROR_EXPRESSION",  /* => mark expression as failed */
+   UPDATE_CURRENT_EXPRESSION : "UPDATE_CURRENT_EXPRESSION",  /* => update expression being built */
 }
 
 export default constants;
