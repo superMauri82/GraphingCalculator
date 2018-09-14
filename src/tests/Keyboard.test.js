@@ -2,19 +2,17 @@ import React from 'react'
 import expect from 'expect'
 import { configure, shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
+import Keyboard from '../components/Keyboard'
 
 configure({ adapter: new Adapter() })
 
 
-import Keyboard from '../components/Keyboard'
-
-describe('Keyboard', () => {
-    describe('Keyboard display', () =>{
+describe('Keyboard Test Suite', () => {
+    describe('Keyboard', () =>{
         it('should render/display always',() => { 
-            //when
-            const keyboard = shallow(<Keyboard symbol="Log" category="function"/>)
-            //then
-            expect(keyboard.html()).toBe('<button class="function">Log</button>')
+            const keyboard = shallow(<Keyboard input='cos(x)' />) 
+
+            expect(keyboard.html()).toBeTruthy()
         })
     })
 })
