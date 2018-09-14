@@ -5,7 +5,8 @@ import { createStore,
 import thunk from 'redux-thunk'
 
 import { 
-    lastFeedbackStatus,
+    currentExpression,
+    feedbackStatus,
     savedExpressions 
 } from  '../reducers/reducers'
 
@@ -29,7 +30,8 @@ const saver = store => next => action => {
 const storeFactory = (initialState=stateData) => 
     applyMiddleware(thunk,logger,saver)(createStore)(
         combineReducers({ 
-          lastFeedbackStatus,
+          currentExpression,
+          feedbackStatus,
           savedExpressions 
         }),
        stateData
