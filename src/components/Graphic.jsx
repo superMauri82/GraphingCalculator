@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { min, max, extent } from 'd3-array'
 import { scaleLinear, scaleOrdinal } from 'd3-scale'
 import { schemeCategory10 } from 'd3-scale-chromatic'
@@ -6,6 +7,8 @@ import { select, event } from 'd3-selection'
 import { brush } from 'd3-brush'
 import { line } from 'd3-shape'
 import { axisLeft, axisBottom } from 'd3-axis'
+import { getNullSamples } from '../lib/lib'
+import { isEmpty } from 'ramda'
 import '../styles/Graphic.css'
 
 export default class Graphic extends Component{
@@ -23,22 +26,12 @@ export default class Graphic extends Component{
         this.createBarCharts()
     }
 
-    shouldComponentUpdate(nextProps, nextState){
-        return true
-    }
-
     componentDidUpdate(){
       this.createBarCharts()
     }
 
     componentWillReceiveProps(nextProps){
 	  this.calculateChartValues(nextProps) 
-    }
-
-    componentWillUpdate(nextProps, nextState){
-    }
-
-    componentWillUnmount(){
     }
 
     calculateChartValues(props){
@@ -48,6 +41,8 @@ export default class Graphic extends Component{
           width,                    
           data,
           onChangeZoomX } = props
+
+        console.log(isEmpty(data[0]))
 
 	     this.colors        = scaleOrdinal(schemeCategory10)
          this.zoom          = zoom
@@ -60,7 +55,7 @@ export default class Graphic extends Component{
          this.yRangeMin     = 0.2*this.yOffset; 
         
          // should be [[]]
-         this.data          = data;
+         this.data          = isEmpty(data[0]) ? [getNullSamples()]  : data;
 
          this.minsAndMaxsOfSamplesFiles = this.data
 		                              .map( sampleArray => extent( sampleArray, d=>+d.y ) )
@@ -97,6 +92,7 @@ export default class Graphic extends Component{
 
         // Defining cursor data accesors 
         this.incomingDataLine = line()
+            .defined( d => d )
             .x((d,i) => { return this.xScale(d.x) } )
             .y( d    => { return this.yScale(parseFloat(d.y)) } )
     }
@@ -244,3 +240,5 @@ export default class Graphic extends Component{
         )
     }
 }
+
+

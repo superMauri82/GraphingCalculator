@@ -1,12 +1,11 @@
 import React from 'react' 
-import { Provider, connect } from 'react-redux'
+import { connect } from 'react-redux'
 import Graphic from './../components/Graphic'
 import storeFactory from '../store/storeFactory'
-import lib from '../lib/lib'
-const store = storeFactory()
+import { getExpressionValues, getNewestExpression } from '../lib/lib'
 
 const mapStateToProps = state => ({
-    data: [lib.getExpressionValues(state.currentExpression)],
+    data: [getExpressionValues(getNewestExpression(state.savedExpressions))],
 })
 
 const GraphicContainer = connect(
@@ -14,9 +13,4 @@ const GraphicContainer = connect(
     null
 )(Graphic)
 
-const WithProvider = () => 
-    <Provider store={store} >
-      <GraphicContainer />
-    </Provider>
-
-export default WithProvider
+export default GraphicContainer

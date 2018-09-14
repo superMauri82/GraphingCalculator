@@ -1,74 +1,70 @@
-import React, {Component} from 'react';
-import Keyboard from 'react-simple-keyboard';
-import 'simple-keyboard/build/css/index.css';
-import '../styles/simple-keyboard-reset.css';
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
+import Keyboard from 'react-simple-keyboard'
+import { getNullSamples } from '../lib/lib'
+import 'simple-keyboard/build/css/index.css'
+import '../styles/simple-keyboard-reset.css'
 
 export default class KeyboardCalculator extends Component {
-  state = {
-    input: '',
-    layoutName: "default"
+
+  constructor(props){
+      super(props)
+      const { 
+          onExpressionUpdate,
+          onChangeWrapper,
+          input
+      } = this.props
+      this.onExpressionUpdate = onExpressionUpdate
+      this.onChangeWrapper    = onChangeWrapper
+      this.input = input
+  }
+
+
+  componentWillReceiveProps(nextProps){
+      console.log('componentWillReceiveProps')
+      console.log(nextProps)
+      const { input } = nextProps
+      this.input = input
   }
 
   componentDidMount(){
-    this.keyboard.setInput("")
-      .then(input => {
-        this.setState({input: input});
-      });
+    //this.keyboard.setInput(this.input)
   }
   
-  onChange = (input) => {
-    this.setState({
-      input: input
-    }, () => {
-      console.log("Input changed", input);
-    });
-  }
 
   onKeyPress = (button) => {
-    console.log("Button pressed", button);
-
-    /* Switch functionality */
-    if(button === "{ext}" || button === "{norm}")
-      this.handleShiftButton();
+    if(button === "{clear}" ){
+      this.onExpressionUpdate('')
+      this.keyboard.setInput('')
+    }
   }
 
-  handleShiftButton = () => {
-    let layoutName = this.state.layoutName;
-    let shiftToggle = layoutName === "default" ? "extended" : "default";
-
-    this.setState({
-      layoutName: shiftToggle
-    });
+  onChange = (input) => { 
+      this.onExpressionUpdate(input)
+      this.onChangeWrapper(input)
   }
-  
+
   render(){
     return (
       <div className={"demoPage"}>
         <div className={"screenContainer"}>
-          <textarea className={"inputContainer"} value={this.state.input} />
+          <textarea className={"inputContainer"} value={this.input} />
         </div>
         <Keyboard
           ref={r => this.keyboard = r}
           onChange={input => this.onChange(input)}
           onKeyPress={button => this.onKeyPress(button)}
-          layoutName={this.state.layoutName}
+          layoutName={'default'}
           newLineOnEnter={true}
           layout={{
             'default': [
-              'x^-1 sin cos tan {bksp}',
-              'x^2 sin ( ) %',
+              'x^-1 sin cos tan abs',
+              'x^2 sin ( ) /',
               'log 7 8 9 *',
               'ln 4 5 6 -',
-              'sqr 1 2 3 +',
-              '{save} 0 . x -',
+              'sqrt 1 2 3 +',
+              '{clear} 0 . x -',
               '{space}',
-            ],
-            'extended': [
-              'ln 1 2 3 (',
-              'tan 4 5 6 )',
-              'acos 7 8 9 C',
-              'acos e 0 pi D',
-              '{space} {bksp} {norm}',
             ]          
           }}
           theme={"hg-layout-default hg-theme-default"}
@@ -76,9 +72,8 @@ export default class KeyboardCalculator extends Component {
           display={{
             '{norm}': 'default',
             '{ext}': 'extended',
-            '{bksp}': 'bksp',
             '{enter}': '< enter',
-            '{save}': 'save',
+            '{clear}': 'clear',
             '{space}': 'space ',
             '{//}': ' '
           }}
@@ -87,4 +82,12 @@ export default class KeyboardCalculator extends Component {
     );
   }
  
+}
+
+KeyboardCalculator.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.array),
+}
+
+KeyboardCalculator.defaultProps = {
+    data: [getNullSamples()]
 }

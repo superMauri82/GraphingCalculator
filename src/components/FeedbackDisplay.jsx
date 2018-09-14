@@ -2,8 +2,34 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 // Receiving statusCode 0 means NO ERROR 
-const FeedbackDisplay = ({ msg, statusCode }) =>  
-  <span style={{ color: (statusCode === 0) ? 'green' : 'red' }} >{msg}</span>
+
+class FeedbackDisplay extends Component {
+    constructor(props){
+        super(props)
+        const { 
+            msg,
+            statusCode
+        } = props
+
+        this.statusCode = statusCode
+        this.msg = msg
+    }
+
+    componentWillReceiveProps(nextProps){
+        const { 
+            msg,
+            statusCode
+        } = nextProps
+
+        this.statusCode = statusCode
+        this.msg = msg
+    }
+
+    render(){
+      return <span style={{ color: (this.statusCode === 0) ? 'green' : 'red' }} >{this.msg}</span>
+    }
+   
+}
 
 FeedbackDisplay.propTypes = {
     msg: PropTypes.string,
@@ -11,7 +37,8 @@ FeedbackDisplay.propTypes = {
 }
 
 FeedbackDisplay.defaultProps = {
-    msg: "No Message",
+    msg: "Enter Expression",
+    statusCode: 0
 }
 
 export default FeedbackDisplay
