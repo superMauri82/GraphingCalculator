@@ -36,12 +36,9 @@ const getFunctionPairsOfValues = (expression) => {
   return range(-10,11)
            .map( n =>({ x: n*0.1 }) )
            .map( o => ({...o, y: code.eval(o) }))
-           .map( o => ({...o, y: either(code.eval,()=>null)(o) }))
+           .map( o => ({...o, y: is(Number,code.eval(o)) ? code.eval(o) : null }))
            .map( o => ( isInfinity(o.y) ? {...o, y: null } : o ) )
 }
-
-
-
 
 const testExpression = (expression='') => { mathjs.eval(expression,{ x: 1 }); return T(); }
 const isValidExpression = (expression='') => tryCatch(testExpression,F)(expression)

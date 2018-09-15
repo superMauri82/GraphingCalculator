@@ -42,8 +42,6 @@ export default class Graphic extends Component{
           data,
           onChangeZoomX } = props
 
-        console.log(isEmpty(data[0]))
-
 	     this.colors        = scaleOrdinal(schemeCategory10)
          this.zoom          = zoom
          this.onChangeZoomX = onChangeZoomX
