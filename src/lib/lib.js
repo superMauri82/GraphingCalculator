@@ -30,6 +30,7 @@ mathjs.config({ predictable: true, matrix: 'Array' })
 
 // Helper Functions for dealing with MATH EXPRESSIONS
 const isInfinity = (p) => equals(Infinity,p) || equals(-Infinity,p)
+const isNaN = (n) => equals(NaN,n)
 
 const getFunctionPairsOfValues = (expression) => {
   const code = mathjs.compile(expression)
@@ -37,7 +38,7 @@ const getFunctionPairsOfValues = (expression) => {
            .map( n =>({ x: n*0.1 }) )
            .map( o => ({...o, y: code.eval(o) }))
            .map( o => ({...o, y: is(Number,code.eval(o)) ? code.eval(o) : null }))
-           .map( o => ( isInfinity(o.y) ? {...o, y: null } : o ) )
+           .map( o => ( isInfinity(o.y) || isNaN(o.y) ? null : o ) )
 }
 
 const testExpression = (expression='') => { mathjs.eval(expression,{ x: 1 }); return T(); }

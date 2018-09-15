@@ -56,11 +56,11 @@ export default class Graphic extends Component{
          this.data          = isEmpty(data[0]) ? [getNullSamples()]  : data;
 
          this.minsAndMaxsOfSamplesFiles = this.data
-		                              .map( sampleArray => extent( sampleArray, d=>+d.y ) )
+		                              .map( sampleArray => extent( sampleArray.filter(d => d !== null), d=>+d.y ) )
 		                              .reduce((a,acc) => a.concat(acc) , []);
 
          this.minsAndMaxsOfDomain       = this.data
-		                              .map( sampleArray => extent( sampleArray, d=>+d.x ) )
+		                              .map( sampleArray => extent( sampleArray.filter(d => d !== null), d=>+d.x ) )
 		                              .reduce((a,acc) => a.concat(acc) , []);
 
          this.shortestOfAll            = min(this.minsAndMaxsOfSamplesFiles,d=>d) 

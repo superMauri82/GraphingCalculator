@@ -21,8 +21,6 @@ export default class KeyboardCalculator extends Component {
 
 
   componentWillReceiveProps(nextProps){
-      console.log('componentWillReceiveProps')
-      console.log(nextProps)
       const { input } = nextProps
       this.input = input
   }
@@ -54,7 +52,7 @@ export default class KeyboardCalculator extends Component {
           layout={{
             'default': [
               'e log pi phi {bksp}',
-              'x^3 sin cos tan  sign',
+              'x^3 sin cos tan sign',
               'x^2 exp ( ) /',
               'log10 7 8 9 *',
               '^ 4 5 6 -',
