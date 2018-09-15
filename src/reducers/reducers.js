@@ -52,7 +52,7 @@ export const currentExpression = (state='', action) => {
 }
 
 // handles INDIVIDUAL SAVED EXPRESSION:
-const savedExpression = ( state = {}, action ) => {
+export const savedExpression = ( state = {}, action ) => {
     switch (action.type){
       case (C.SAVE_EXPRESSION): { 
         return {
