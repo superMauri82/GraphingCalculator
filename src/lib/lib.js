@@ -32,7 +32,6 @@ mathjs.config({ predictable: true, matrix: 'Array' })
 const isInfinity = (p) => equals(Infinity,p) || equals(-Infinity,p)
 
 const getFunctionPairsOfValues = (expression) => {
-  console.log(expression)
   const code = mathjs.compile(expression)
   return range(-10,11)
            .map( n =>({ x: n*0.1 }) )
