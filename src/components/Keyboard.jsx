@@ -58,9 +58,10 @@ export default class KeyboardCalculator extends Component {
           newLineOnEnter={true}
           layout={{
             'default': [
-              'x^3 sin cos tan {bksp}',
+              'e log pi sign {bksp}',
+              'x^3 sin cos tan ',
               'x^2 exp ( ) /',
-              'log 7 8 9 *',
+              'log10 7 8 9 *',
               '^ 4 5 6 -',
               'sqrt 1 2 3 +',
               '{clear} 0 . x abs',
