@@ -2,7 +2,7 @@
 import C from '../actions/constants'
 
 
-// Exported Reducer:
+// handles FEEDBACK to the user:
 
 export const feedbackStatus = (state={}, action) =>{
     switch (action.type){
@@ -26,7 +26,7 @@ export const feedbackStatus = (state={}, action) =>{
 }
 
 
-// Exported Reducer:
+// handles SAVED EXPRESSIONS:
 export const savedExpressions = (state=[], action) => {
     switch (action.type){
       case (C.SAVE_EXPRESSION): {
@@ -40,7 +40,7 @@ export const savedExpressions = (state=[], action) => {
     }
 }
 
-// Exported Reducer:
+// handles CURRENT EXPRESSION:
 export const currentExpression = (state='', action) => {
     switch (action.type){
       case (C.UPDATE_CURRENT_EXPRESSION): {
@@ -51,7 +51,7 @@ export const currentExpression = (state='', action) => {
     }
 }
 
-// Internal Use Reducer:
+// handles INDIVIDUAL SAVED EXPRESSION:
 const savedExpression = ( state = {}, action ) => {
     switch (action.type){
       case (C.SAVE_EXPRESSION): { 
