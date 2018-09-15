@@ -1,13 +1,13 @@
 import C from './constants'
 import { isSafeExpression, getCreationTime, getId } from '../lib/lib'
 
-const errorExpression = ( expression='' ) =>
+export const errorExpression = ( expression='' ) =>
       ({
           expression: expression,
           type: C.ERROR_EXPRESSION
       })
 
-const saveExpression = ( expression='' ) =>
+export const saveExpression = ( expression='' ) =>
       ({
           id: getId(),
           createdAt: getCreationTime(),
@@ -20,7 +20,7 @@ export const saveOrErrorExpression = ( expression='' ) =>
 
 export const removeExpression = ( id ) =>
       ({
-          ...id,
+          id,
           type: C.REMOVE_EXPRESSION
       })
 

@@ -2,7 +2,7 @@ import React from 'react'
 import expect from 'expect'
 import { configure, shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import Keyboard from '../components/Keyboard'
+import Keyboard from '../../components/Keyboard'
 
 configure({ adapter: new Adapter() })
 

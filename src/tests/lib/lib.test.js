@@ -10,7 +10,7 @@ import {
   getCreationTime, 
   getId, 
   getNullSamples
-} from '../lib/lib'
+} from '../../lib/lib'
 
 describe('getId Test Suite', () => {
     describe('getId', () =>{
