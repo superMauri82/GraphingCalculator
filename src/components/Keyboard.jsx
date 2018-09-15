@@ -27,11 +27,6 @@ export default class KeyboardCalculator extends Component {
       this.input = input
   }
 
-  componentDidMount(){
-    //this.keyboard.setInput(this.input)
-  }
-  
-
   onKeyPress = (button) => {
     if(button === "{clear}" ){
       this.onExpressionUpdate('')
@@ -58,8 +53,8 @@ export default class KeyboardCalculator extends Component {
           newLineOnEnter={true}
           layout={{
             'default': [
-              'e log pi sign {bksp}',
-              'x^3 sin cos tan ',
+              'e log pi phi {bksp}',
+              'x^3 sin cos tan  sign',
               'x^2 exp ( ) /',
               'log10 7 8 9 *',
               '^ 4 5 6 -',
