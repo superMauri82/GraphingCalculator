@@ -11,7 +11,7 @@ import storeFactory from '../store/storeFactory'
 
 const store = storeFactory()
 
-const CalculatorContainer = () => (
+const CalculatorMainGrid = () => (
   <Provider store={store}>
     <Grid container stacked divided columns={2}>
       <Grid.Row stretched >
@@ -37,4 +37,4 @@ const CalculatorContainer = () => (
 
 )
 
-export default CalculatorContainer;
+export default CalculatorMainGrid;
