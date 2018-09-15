@@ -33,7 +33,7 @@ class FeedbackDisplay extends Component {
 
 FeedbackDisplay.propTypes = {
     msg: PropTypes.string,
-    statusCode: PropTypes.number.isRequired
+    statusCode: PropTypes.number
 }
 
 FeedbackDisplay.defaultProps = {
